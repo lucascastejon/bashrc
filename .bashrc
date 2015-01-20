@@ -3,6 +3,11 @@ unset color_prompt force_color_prompt
 export PATH="$PATH:$HOME/.rvm/bin" 
 source /home/lucas/.rvm/scripts/rvm
 
+#get ruby version on use
+function ruby_version(){
+    ruby -v | cut -d" " -f2
+}
+
 #get git branch on use
 function git_branch_name() {
     git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
