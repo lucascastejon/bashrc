@@ -8,6 +8,12 @@ function git_branch_name() {
     git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
 }
 
+# teste posxml
+function runtest() {
+    sudo chmod 777 /dev/ttyUSB0
+    ruby test/functional/connectivity_test.rb
+}
+
 # check the Total, Free and Used of memory 
 function free_space()
 {
