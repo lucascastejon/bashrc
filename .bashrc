@@ -26,6 +26,18 @@ function free_space()
   	esac
   	# echo $(($var/1024))
   	cd $var1
+
+  	#also this
+  	#echo "Total: "$(df -h | sed -n 2p | awk '{print $2}')
+    #echo "Free: "$(df -h | sed -n 2p | awk '{print $4}')
+    #echo "Used: "$(df -h | sed -n 2p | awk '{print $3}')
+}
+
+# open other workspace
+function openote()
+{
+    wmctrl -s1
+    xpad &> /dev/null
 }
 
 #generate PS1 colored
