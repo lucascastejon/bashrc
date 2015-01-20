@@ -1,0 +1,4 @@
+
+# Cute shell shortcuts vagrant
+alias suspend='vagrant suspend'
+alias up='vagrant up'
