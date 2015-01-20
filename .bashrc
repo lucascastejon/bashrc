@@ -89,6 +89,21 @@ function code_version {
     [ "$codes" != "" ] && echo "$codes"
 }
 
+function _git_prompt() {
+    local git_status="`git status -unormal 2>&1`"
+    if ! [[ "$git_status" =~ Not\ a\ git\ repo ]]; then
+        if [[ "$git_status" =~ nothing\ to\ commit ]]; then
+            local bcolor=42
+        elif [[ "$git_status" =~ nothing\ added\ to\ commit\ but\ untracked\ files\ present ]]; then
+            local bcolor=43
+        else
+            local bcolor=41
+        fi
+        # echo -n '\[\e[0;37;'"$ansi"';1m\]'"$(git_branch_name)"'\[\e[0m\]'
+    fi
+    echo -n "$bcolor"
+}
+
 # check the Total, Free and Used of memory 
 function free_space()
 {
