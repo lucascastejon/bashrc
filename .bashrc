@@ -8,6 +8,11 @@ function ruby_version(){
     ruby -v | cut -d" " -f2
 }
 
+# get django version on use
+function django_version(){
+    echo "$(/usr/bin/python -c 'import django; print django.get_version()')" | cut -d" " -f1 | cut -d"'" -f2
+}
+
 # get python version on use
 function python_version(){
     echo "$(/usr/bin/python -c 'import sys; print repr(sys.version)')" | cut -d" " -f1 | cut -d"'" -f2
