@@ -47,6 +47,48 @@ function runtest() {
     ruby test/functional/connectivity_test.rb
 }
 
+#Function to return verions of techs used
+function code_version {
+    local codes=""
+    local list_files="none"
+    if [ -d ".git" ]
+    then
+
+        list_files=$(find . -name 'manage.py')
+        list_files="$(echo django)"$(echo $list_files | sed 's/ /:/g' | cut -d: -f1 )
+
+        if [ $list_files != "django" ]
+        then
+            codes=$codes"(Django $(django_version))"
+        fi
+
+        list_files=$(find . -name '*.py')
+        list_files="$(echo python)"$(echo $list_files | sed 's/ /:/g' | cut -d: -f1 )
+
+        if [ $list_files != "python" ]
+        then
+            codes=$codes"(Python $(python_version))"
+        fi
+
+         list_files=$(find . -name '*.rb')
+         list_files="$(echo ruby)"$(echo $list_files | sed 's/ /:/g' | cut -d: -f1 )
+        
+         if [ $list_files != "ruby" ]
+         then
+             codes=$codes"(Ruby $(ruby_version))"
+         fi
+
+        list_files=$(find . -name '*.java')
+        list_files="$(echo java)"$(echo $list_files | sed 's/ /:/g' | cut -d: -f1 )
+        
+        if [ $list_files != "java" ]
+        then
+            codes=$codes"(Java $(java_version))"
+        fi
+    fi
+    [ "$codes" != "" ] && echo "$codes"
+}
+
 # check the Total, Free and Used of memory 
 function free_space()
 {
