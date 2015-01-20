@@ -8,6 +8,13 @@ function ruby_version(){
     ruby -v | cut -d" " -f2
 }
 
+#Funcion to get which gemset you are using
+function rvm_version {
+    local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
+    [ "$gemset" != "" ] && echo "@$gemset"
+}
+
+
 #get git branch on use
 function git_branch_name() {
     git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
