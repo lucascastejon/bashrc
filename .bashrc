@@ -8,6 +8,11 @@ function git_branch_name() {
     git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1)/'
 }
 
+# check if branch it is altered
+function parse_git_dirty() {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]]  && echo "!"
+}
+
 # teste posxml
 function runtest() {
     sudo chmod 777 /dev/ttyUSB0
