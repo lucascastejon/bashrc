@@ -8,6 +8,12 @@ function ruby_version(){
     ruby -v | cut -d" " -f2
 }
 
+#get java version on use
+function java_version {
+    local java_v=$(java -version 2>&1 | awk -F '"' '/version/ {print $2}')
+    [ "$java_v" != "" ] && echo "$java_v"
+}
+
 # get django version on use
 function django_version(){
     echo "$(/usr/bin/python -c 'import django; print django.get_version()')" | cut -d" " -f1 | cut -d"'" -f2
