@@ -8,6 +8,11 @@ function ruby_version(){
     ruby -v | cut -d" " -f2
 }
 
+# get python version on use
+function python_version(){
+    echo "$(/usr/bin/python -c 'import sys; print repr(sys.version)')" | cut -d" " -f1 | cut -d"'" -f2
+}
+
 #Funcion to get which gemset you are using
 function rvm_version {
     local gemset=$(echo $GEM_HOME | awk -F'@' '{print $2}')
