@@ -45,4 +45,10 @@ function show_colored_git_branch_in_prompt() {
 	PS1=echo -e "\e[1;33;41m $(git_branch_name) \e[0m"
 }
 
+# ignoreboth="ignoredups:ignorespace", erasedups=remove comandos duplicados
+HISTCONTROL=ignoreboth:erasedups
+# expressões regulares de comandos a serem ignorados
+HISTIGNORE="history:pwd:ls:l:ll:la:[bf]g:exit"
+HISTSIZE=1500
+
 show_colored_git_branch_in_prompt
