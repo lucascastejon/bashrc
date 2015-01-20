@@ -138,7 +138,8 @@ function openote()
 
 #generate PS1 colored
 function show_colored_git_branch_in_prompt() {
-	PS1=echo -e "\e[1;33;41m $(git_branch_name) \e[0m"
+     #PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w\[\033[31m\]\$(git_branch_name)\[\033[33m\]\$(ruby_version)\[\033[33m\]\$(rvm_version)\[\033[m\]\$"
+	PS1="\[\033[01;34m\]\w\[\033[\$(_git_prompt);37m\]\$(git_branch_name)\[\e[0m\]\[\033[1;32m\]\$\[\033[33m\]\[\033[m\]:"
 }
 
 # ignoreboth="ignoredups:ignorespace", erasedups=remove comandos duplicados
